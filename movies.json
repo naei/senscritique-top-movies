@@ -1,0 +1,364 @@
+{
+  "Le Cercle des neiges": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 3154,
+      "rank": 2,
+      "picture": "https://media.senscritique.com/media/000021762682/300/le_cercle_des_neiges.png"
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 3201,
+      "rank": 1,
+      "picture": "https://media.senscritique.com/media/000021762682/300/le_cercle_des_neiges.png"
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 3271,
+      "rank": 1,
+      "picture": "https://media.senscritique.com/media/000021762682/300/le_cercle_des_neiges.png"
+    }
+  ],
+  "Priscilla": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 2952,
+      "rank": 3
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 2978,
+      "rank": 2
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 3012,
+      "rank": 2,
+      "picture": "https://media.senscritique.com/media/000021798655/300/priscilla.png"
+    }
+  ],
+  "Moi capitaine": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 829,
+      "rank": 4
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 840,
+      "rank": 3
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 858,
+      "rank": 3,
+      "picture": "https://media.senscritique.com/media/000021640897/300/moi_capitaine.jpg"
+    }
+  ],
+  "Pauvres Créatures": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 537,
+      "rank": 6
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 555,
+      "rank": 4
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 760,
+      "rank": 4,
+      "picture": "https://media.senscritique.com/media/000021743398/300/pauvres_creatures.png"
+    }
+  ],
+  "Jeunesse (Le Printemps)": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 354,
+      "rank": 5
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 420,
+      "rank": 5
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 360,
+      "rank": 5,
+      "picture": "https://media.senscritique.com/media/000021829667/300/jeunesse_le_printemps.jpg"
+    }
+  ],
+  "Making of": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 731,
+      "rank": 4
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 876,
+      "rank": 6
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 790,
+      "rank": 6,
+      "picture": "https://media.senscritique.com/media/000021826389/300/making_of.png"
+    }
+  ],
+  "La Zone d’interêt": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 440,
+      "rank": 3
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 443,
+      "rank": 7
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 472,
+      "rank": 7,
+      "picture": "https://media.senscritique.com/media/000021835879/300/la_zone_dinteret.png"
+    }
+  ],
+  "May December": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 616,
+      "rank": 4
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 687,
+      "rank": 8
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 624,
+      "rank": 8,
+      "picture": "https://media.senscritique.com/media/000021859593/300/may_december.png"
+    }
+  ],
+  "Un silence": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 443,
+      "rank": 5
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 800,
+      "rank": 9
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 479,
+      "rank": 9,
+      "picture": "https://media.senscritique.com/media/000021852823/300/un_silence.jpg"
+    }
+  ],
+  "Iris et les hommes": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 785,
+      "rank": 7
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 784,
+      "rank": 10
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 797,
+      "rank": 10,
+      "picture": "https://media.senscritique.com/media/000021830405/300/iris_et_les_hommes.png"
+    }
+  ],
+  "Les Chambres rouges": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 308,
+      "rank": 8
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 334,
+      "rank": 11
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 311,
+      "rank": 11,
+      "picture": "https://media.senscritique.com/media/000021782835/300/les_chambres_rouges.png"
+    }
+  ],
+  "Night Swim": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 195,
+      "rank": 10
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 199,
+      "rank": 12
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 200,
+      "rank": 12,
+      "picture": "https://media.senscritique.com/media/000021712703/300/night_swim.jpg"
+    }
+  ],
+  "Vampire humaniste cherche suicidaire consentant": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 270,
+      "rank": 14
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 299,
+      "rank": 13
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 273,
+      "rank": 13,
+      "picture": "https://media.senscritique.com/media/000021783041/300/vampire_humaniste_cherche_suicidaire_consentant.jpg"
+    }
+  ],
+  "The Sweet East": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 171,
+      "rank": 13
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 198,
+      "rank": 14
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 172,
+      "rank": 14,
+      "picture": "https://media.senscritique.com/media/000021370613/300/the_sweet_east.jpg"
+    }
+  ],
+  "La Vie rêvée de Miss Fran": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 246,
+      "rank": 11
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 254,
+      "rank": 15
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 260,
+      "rank": 15,
+      "picture": "https://media.senscritique.com/media/000021809244/300/la_vie_revee_de_miss_fran.png"
+    }
+  ],
+  "Scrapper": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 179,
+      "rank": 15
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 187,
+      "rank": 16
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 185,
+      "rank": 16,
+      "picture": "https://media.senscritique.com/media/000021759559/300/scrapper.jpg"
+    }
+  ],
+  "Mean Girls - Lolita malgré moi": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 231,
+      "rank": 19
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 232,
+      "rank": 17
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 248,
+      "rank": 17,
+      "picture": "https://media.senscritique.com/media/000021794715/300/mean_girls_lolita_malgre_moi.png"
+    }
+  ],
+  "Foe": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 210,
+      "rank": 17
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 214,
+      "rank": 18
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 215,
+      "rank": 18,
+      "picture": "https://media.senscritique.com/media/000021843008/300/foe.png"
+    }
+  ],
+  "Si seulement je pouvais hiberner": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 195,
+      "rank": 14
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 199,
+      "rank": 19
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 214,
+      "rank": 19,
+      "picture": "https://media.senscritique.com/media/000021852782/300/si_seulement_je_pouvais_hiberner.jpg"
+    }
+  ],
+  "En plein vol": [
+    {
+      "date": "2024-01-15",
+      "ratingCount": 211,
+      "rank": 19
+    },
+    {
+      "date": "2024-01-16",
+      "ratingCount": 228,
+      "rank": 20
+    },
+    {
+      "date": "2024-01-17",
+      "ratingCount": 231,
+      "rank": 20,
+      "picture": "https://media.senscritique.com/media/000021854945/300/en_plein_vol.png"
+    }
+  ]
+}
