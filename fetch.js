@@ -68,25 +68,26 @@ async function fetchMovies() {
         products.forEach((product, index) => {
             const title = product.title;
             if (!moviesData[title]) {
-                moviesData[title] = [];
+                moviesData[title] = {
+                    picture: product.medias.picture,
+                    entries: []
+                };
             }
 
             // Find the entry for today's date, if it exists
-            const existingEntryIndex = moviesData[title].findIndex(entry => entry.date === today);
+            const existingEntryIndex = moviesData[title].entries.findIndex(entry => entry.date === today);
 
             const updatedEntry = {
                 date: today,
-                ratingCount: product.stats.ratingCount,
-                rank: index + 1,
-                picture: product.medias.picture
+                rank: index + 1
             };
 
             if (existingEntryIndex >= 0) {
                 // Update existing entry for today
-                moviesData[title][existingEntryIndex] = updatedEntry;
+                moviesData[title].entries[existingEntryIndex] = updatedEntry;
             } else {
                 // Add new entry for today
-                moviesData[title].push(updatedEntry);
+                moviesData[title].entries.push(updatedEntry);
             }
         });
 
