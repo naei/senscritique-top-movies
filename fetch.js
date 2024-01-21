@@ -1,5 +1,6 @@
 const fs = require('fs').promises;
 
+// Fetch movies from https://www.senscritique.com/top/resultats/les_meilleurs_films_de_2024/3711061
 async function fetchMovies() {
     const url = 'https://apollo.senscritique.com/';
     const headers = {
@@ -21,6 +22,7 @@ async function fetchMovies() {
             query Poll($id: Int!, $limit: Int, $offset: Int) {
             poll(id: $id) {
                 products(limit: $limit, offset: $offset) {
+                  id
                   title
                   originalTitle
                   rating
@@ -66,16 +68,17 @@ async function fetchMovies() {
 
         // Process and update new data for the current day
         products.forEach((product, index) => {
-            const title = product.title;
-            if (!moviesData[title]) {
-                moviesData[title] = {
+            const movieId = product.id; // Use movie ID as key
+            if (!moviesData[movieId]) {
+                moviesData[movieId] = {
+                    title: product.title,
                     picture: product.medias.picture,
                     entries: []
                 };
             }
 
             // Find the entry for today's date, if it exists
-            const existingEntryIndex = moviesData[title].entries.findIndex(entry => entry.date === today);
+            const existingEntryIndex = moviesData[movieId].entries.findIndex(entry => entry.date === today);
 
             const updatedEntry = {
                 date: today,
@@ -84,10 +87,10 @@ async function fetchMovies() {
 
             if (existingEntryIndex >= 0) {
                 // Update existing entry for today
-                moviesData[title].entries[existingEntryIndex] = updatedEntry;
+                moviesData[movieId].entries[existingEntryIndex] = updatedEntry;
             } else {
                 // Add new entry for today
-                moviesData[title].entries.push(updatedEntry);
+                moviesData[movieId].entries.push(updatedEntry);
             }
         });
 

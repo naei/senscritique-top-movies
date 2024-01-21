@@ -14,8 +14,7 @@ function createAggregateChart(moviesData) {
     const labels = new Set(); // To store unique dates
     let maxRank = 0; // To determine the highest rank
 
-    Object.keys(moviesData).forEach((movieTitle, index) => {
-        const movie = moviesData[movieTitle];
+    Object.values(moviesData).forEach(movie => {
         movie.entries.forEach(entry => {
             labels.add(entry.date);
             if (entry.rank > maxRank) {
@@ -29,8 +28,9 @@ function createAggregateChart(moviesData) {
         }));
 
         datasets.push({
-            label: movieTitle,
+            label: movie.title, // Use movie title instead of ID
             data: data,
+            fill: false,
         });
     });
 
@@ -47,9 +47,20 @@ function createAggregateChart(moviesData) {
                 y: {
                     reverse: true,
                     min: 1,
-                    max: yAxisMax, // Set dynamically based on data
+                    max: yAxisMax,
                 }
             },
+            plugins: {
+                legend: {
+                    display: true,
+                    position: 'right', // Position the legend to the right
+                    align: 'start', // Align to the top of the chart area
+                    labels: {
+                        boxWidth: 10,
+                        padding: 10
+                    }
+                }
+            }
         }
     });
 }
@@ -58,61 +69,76 @@ let chartCounter = 0; // Counter for generating unique chart IDs
 
 function displayMovies(moviesData) {
     const container = document.getElementById('movies-container');
-    const addedMovies = []; // Maintain a list of added movies
+    const allDates = new Set(); // Set to store all unique dates
 
-    Object.keys(moviesData).forEach((movieTitle, index) => {
-        const movie = moviesData[movieTitle];
+    // Collect all unique dates from every movie
+    Object.values(moviesData).forEach(movie => {
+        movie.entries.forEach(entry => allDates.add(entry.date));
+    });
 
-        // Check if the movie title is already in the addedMovies list
-        if (!addedMovies.includes(movieTitle)) {
-            const movieDiv = document.createElement('div');
-            movieDiv.className = 'movie';
+    const sortedDates = Array.from(allDates).sort();
 
-            // Generate a unique chart ID for the canvas
-            const chartID = `chart-${chartCounter}`;
-            chartCounter++; // Increment the counter
+    // Sort movies based on their latest rank
+    const moviesArray = Object.values(moviesData).sort((a, b) => {
+        const aLatestEntry = a.entries[a.entries.length - 1];
+        const bLatestEntry = b.entries[b.entries.length - 1];
+        return aLatestEntry.rank - bLatestEntry.rank;
+    });
 
-            movieDiv.innerHTML = `
-                <div class="movie-info">
-                    <img src="${movie.picture}" alt="${movieTitle}" class="movie-picture">
-                    <span class="movie-title">#${index+1} - ${movieTitle}</span>
-                </div>
-                <div class="chart-container">
-                    <canvas id="${chartID}" class="movie-chart"></canvas>
-                </div>
-            `;
+    moviesArray.forEach((movie, index) => {
+        const movieDiv = document.createElement('div');
+        movieDiv.className = 'movie';
 
-            container.appendChild(movieDiv);
+        // Generate a unique chart ID for the canvas
+        const chartID = `chart-${chartCounter}`;
+        chartCounter++; // Increment the counter
 
-            const maxRank = Math.max(...movie.entries.map(entry => entry.rank));
-            const yAxisMax = Math.ceil(maxRank / 10) * 10; // Round up to the nearest multiple of 10
+        movieDiv.innerHTML = `
+            <div class="movie-info">
+                <img src="${movie.picture}" alt="${movie.title}" class="movie-picture">
+                <span class="movie-title">#${index+1} - ${movie.title}</span>
+            </div>
+            <div class="chart-container">
+                <canvas id="${chartID}" class="movie-chart"></canvas>
+            </div>
+        `;
 
-            const ctx = document.getElementById(chartID).getContext('2d');
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: movie.entries.map(entry => entry.date),
-                    datasets: [{
-                        label: movieTitle,
-                        data: movie.entries.map(entry => entry.rank),
-                    }]
+        container.appendChild(movieDiv);
+
+        // Create a standardized dataset for the movie with all dates
+        const standardizedData = sortedDates.map(date => {
+            const entry = movie.entries.find(entry => entry.date === date);
+            return {
+                x: date,
+                y: entry ? entry.rank : null // Use null or a specific value if no data for this date
+            };
+        });
+
+        const ctx = document.getElementById(chartID).getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: sortedDates,
+                datasets: [{
+                    label: movie.title,
+                    data: standardizedData,
+                    fill: false, // Optional: for better visual distinction
+                }]
+            },
+            options: {
+                plugins: {
+                    legend: {
+                        display: false
+                    }
                 },
-                options: {
-                    scales: {
-                        y: {
-                            reverse: true,
-                            min: 1,
-                            max: yAxisMax,
-                        }
-                    },
+                scales: {
+                    y: {
+                        reverse: true,
+                        min: 1,
+                        suggestedMax: 10, // Adjust as needed
+                    }
                 }
-            });
-
-            // Add the movie title to the addedMovies list to prevent duplicates
-            addedMovies.push(movieTitle);
-
-            // Debugging: Print the movie title as it's added
-            console.log('Added movie:', movieTitle);
-        }
+            }
+        });
     });
 }
