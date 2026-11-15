@@ -5,27 +5,32 @@ on:
   schedule:
     - cron: '0 0 * * 0'  # At 00:00 on Sunday
 
+permissions:
+  contents: write
+
 jobs:
   run-fetch-script:
     runs-on: ubuntu-latest
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@v7
 
     - name: Set up Node.js
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v7
       with:
-        node-version: '20'
+        node-version: '24'
 
     - name: Run fetch.js
-      run: |
-        node fetch.js
+      run: node fetch.js
 
+    # Runs even if one ranking failed: whatever was fetched is still saved,
+    # and the job stays red so the failure is noticed.
     - name: Commit and push if changes
+      if: always()
       run: |
         git config --global user.email "actions@github.com"
         git config --global user.name "Action Bot"
-        git add movies.json
+        git add data
         git commit -m "update movies db" || exit 0
         git push

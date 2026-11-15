@@ -1,113 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="fr">
 
 <head>
-    <meta charset="UTF-8">
-    <title>SensCritique Top Movies</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            padding: 20px;
-            background-color: #1a1a1a;
-            color: #ffffff;
-        }
-
-        #breadcrumb {
-            padding: 10px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            text-align: left;
-            font-size: 0.8em;
-        }
-
-        #breadcrumb div {
-            margin: 0;
-            width: fit-content;
-        }
-
-        #breadcrumb a {
-            text-decoration: none;
-            color: #0275d8;
-            font-weight: bold;
-        }
-
-        #breadcrumb span {
-            color: #666;
-        }
-
-        #aggregate-chart-container {
-            margin-bottom: 30px;
-            max-width: 100%;
-        }
-
-        #aggregate-chart {
-            height: auto;
-        }
-
-        hr {
-            margin-top: 50px;
-            margin-bottom: 100px;
-            height: 10px;
-            border: 0;
-            background-color: #131313;
-        }
-
-        .movie {
-            display: flex;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
-        .movie-info {
-            margin-right: 20px;
-            text-align: center;
-            width: 200px;
-            border-color: #333333;
-        }
-
-        .movie-picture {
-            width: 150px;
-            height: auto;
-        }
-
-        .movie-title {
-            display: block;
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-
-        .chart-container {
-            width: 800px;
-        }
-
-        .movie-chart {
-            width: 100%;
-            height: 100%;
-        }
-
-        canvas {
-            background-color: #262626;
-        }
-    </style>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light dark">
+    <title>Top films SensCritique, semaine après semaine</title>
+    <meta name="description"
+        content="Remontez le temps dans le classement des meilleurs films de l'année sur SensCritique, relevé chaque semaine.">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2317162b'/%3E%3Cpath d='M7 22l6-7 4 4 8-10' fill='none' stroke='%23ffc83d' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="app.js"></script>
 </head>
 
 <body>
-    <header>
-        <nav id="breadcrumb">
-            <div><span>SensCritique Top Movies</span></div>
-        </nav>
-    </header>
+    <div class="page">
+        <header class="head">
+            <h1 class="brand">Top films SensCritique</h1>
+            <label class="years">
+                <span class="visually-hidden">Classement affiché</span>
+                <select id="years"></select>
+            </label>
+        </header>
 
-    <div id="aggregate-chart-container">
-        <canvas id="aggregate-chart"></canvas>
+        <main>
+            <h2 class="ranking"><a id="poll-link" href="https://www.senscritique.com" target="_blank" rel="noopener">&nbsp;</a></h2>
+            <p class="note" id="note"></p>
+
+            <ol class="list" id="list" aria-label="Classement à la date choisie"></ol>
+            <p class="empty" id="empty" hidden></p>
+
+            <footer class="about">
+                <p>
+                    Projet indépendant, sans lien avec
+                    <a href="https://www.senscritique.com" target="_blank" rel="noopener">SensCritique</a>. Les affiches et les
+                    titres appartiennent à leurs ayants droit.
+                </p>
+                <p>
+                    Le <a href="https://github.com/naei/senscritique-top-movies" target="_blank" rel="noopener">code source</a>
+                    est publié sous licence MIT.
+                </p>
+            </footer>
+        </main>
     </div>
 
-    <hr>
+    <footer class="timeline" aria-label="Frise chronologique">
+        <button type="button" class="play" id="play" aria-label="Lancer la lecture">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+                <path class="icon-play" d="M8 5.5v13l11-6.5z" />
+                <path class="icon-pause" d="M7 5h4v14H7zM13 5h4v14h-4z" />
+            </svg>
+        </button>
+        <div class="track" id="track">
+            <output class="now" id="now" for="slider"></output>
+            <label class="visually-hidden" for="slider">Date du classement</label>
+            <input type="range" id="slider" min="0" max="0" step="1" value="0">
+            <div class="ticks" id="ticks" aria-hidden="true"></div>
+        </div>
+        <button type="button" class="speed" id="speed" aria-label="Vitesse de lecture : 1 fois">×1</button>
+    </footer>
 
-    <div id="movies-container"></div>
+    <p id="status" role="status" class="visually-hidden"></p>
 
-    <script src="index.js"></script>
+    <dialog class="panel" id="panel" closedby="any" aria-labelledby="panel-title">
+        <form method="dialog" class="panel-close">
+            <button type="submit" aria-label="Fermer">
+                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" />
+                </svg>
+            </button>
+        </form>
+        <div class="panel-head">
+            <img id="panel-poster" alt="" width="96" height="131">
+            <div>
+                <h2 id="panel-title"></h2>
+                <p class="panel-meta" id="panel-meta"></p>
+                <a id="panel-link" target="_blank" rel="noopener">Voir la fiche sur SensCritique</a>
+            </div>
+        </div>
+        <dl class="stats" id="panel-stats"></dl>
+        <figure class="chart">
+            <figcaption id="chart-caption">Rang dans le classement au fil du temps</figcaption>
+            <div class="chart-box">
+                <svg id="chart" viewBox="0 0 440 240" role="img" tabindex="0"></svg>
+                <div class="tip" id="tip" hidden></div>
+            </div>
+            <p class="chart-hint">Cliquez sur la courbe pour afficher le classement à cette date.</p>
+        </figure>
+    </dialog>
 </body>
 
 </html>

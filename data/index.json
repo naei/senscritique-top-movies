@@ -1,0 +1,8 @@
+{
+  "rankings": [
+    {"key":"2024","pollId":3711061,"label":"Les meilleurs films de 2024","url":"https://www.senscritique.com/top/resultats/les_meilleurs_films_de_2024/3711061"},
+    {"key":"2025","pollId":3996052,"label":"Les meilleurs films de 2025","url":"https://www.senscritique.com/top/resultats/les_meilleurs_films_de_2025/3996052"},
+    {"key":"2026","pollId":4238470,"label":"Les meilleurs films de 2026","url":"https://www.senscritique.com/top/resultats/les_meilleurs_films_de_2026/4238470"},
+    {"key":"all-time","top":"TOP_100_OUT_OF_TOP_10","label":"Top 100 des Tops 10 films","url":"https://www.senscritique.com/films/tops/top100-des-top10","everyDays":28}
+  ]
+}
